@@ -1,0 +1,63 @@
+$side-bar-size: 250px;
+
+body, html {
+  margin: 0;
+  padding: 0;
+}
+
+aside {
+  background-color: #232323;
+  position: absolute;
+  width: $side-bar-size;
+  height: 100%;
+}
+
+main {
+  height: 100%;
+  background-color: #000;
+  padding-left: $side-bar-size;
+  text-align: center;
+
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  overflow:hidden;
+
+  img {
+    flex-shrink: 0;
+    max-height: 100%;
+    max-width: 100%;
+    vertical-align: middle;
+  }
+}
+
+// This mixin is necessary since FF/Iceweasel does not support the
+// ::shadow selector. Having it coupled together breaks in FF
+@mixin override-clock-style() {
+  margin-top: 10px;
+  text-align: center;
+
+  * {
+    font-size: 55px;
+  }
+
+  > span {
+    margin-right: 0px;
+    padding: 5px 5px;
+  }
+
+  > b {
+    margin-right: 0px;
+    color: #777;
+  }
+}
+
+flip-clock #clock
+{
+  @include override-clock-style();
+}
+
+flip-clock::shadow #clock
+{
+  @include override-clock-style();
+}
