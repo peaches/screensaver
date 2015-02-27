@@ -3,6 +3,8 @@
   "version": "0.0.1",
   "dependencies": {
     "flip-clock": "*",
-    "jquery": "*"
+    "jquery": "*",
+    "moment": "*",
+    "ramda": "*"
   }
 }

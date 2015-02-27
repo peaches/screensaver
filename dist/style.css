@@ -1,12 +1,45 @@
 body, html {
   margin: 0;
-  padding: 0; }
+  padding: 0;
+  font-family: arial; }
 
 aside {
   background-color: #232323;
   position: absolute;
   width: 250px;
-  height: 100%; }
+  height: 100%;
+  color: white; }
+  aside .bus-schedule {
+    margin-top: 20px; }
+    aside .bus-schedule .row {
+      position: relative;
+      border-bottom: 1px solid #444;
+      padding: 10px;
+      overflow: auto; }
+      aside .bus-schedule .row:first-child {
+        border-top: 1px solid #444; }
+    aside .bus-schedule .route {
+      margin-left: 15px;
+      float: left;
+      font-size: 55px; }
+    aside .bus-schedule .description {
+      font-size: 12px;
+      text-transform: capitalize;
+      width: 70px;
+      position: absolute;
+      left: 50%;
+      margin-left: -25px; }
+    aside .bus-schedule .time {
+      width: 60px;
+      text-align: center;
+      font-size: 40px;
+      float: right; }
+      aside .bus-schedule .time.positive {
+        color: green; }
+      aside .bus-schedule .time.negative {
+        color: red; }
+      aside .bus-schedule .time .delta {
+        font-size: 20px; }
 
 main {
   height: 100%;
