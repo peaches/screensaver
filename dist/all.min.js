@@ -84,7 +84,7 @@ $(function()  {
   $('main img').attr('src', 'https://lh3.googleusercontent.com/-FjRXfJ5yWGk/VOwlBgvw50I/AAAAAAAAAoc/S15mCt7EQUs/s1600/faces.jpg');
 });
 
-$(function()  {
+var refreshBusSchedule = function()  {
   var url = 'http://api.pugetsound.onebusaway.org/api/where/arrivals-and-departures-for-stop/1_35741.json?key=v1_C5%2Baiesgg8DxpmG1yS2F%2Fpj2zHk%3Dc3BoZW5yeUBnbWFpbC5jb20%3D=';
   $.ajax({
     type: 'GET',
@@ -92,4 +92,7 @@ $(function()  {
     dataType: 'jsonp',
     jsonpCallback: 'updateBusSchedule'
   });
-});
+}
+
+refreshBusSchedule()
+//setInterval(refreshBusSchedule, 60000);

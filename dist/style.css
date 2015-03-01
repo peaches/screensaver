@@ -1,7 +1,7 @@
 body, html {
   margin: 0;
   padding: 0;
-  font-family: arial; }
+  font-family: arial, sans-serif; }
 
 aside {
   background-color: #232323;
@@ -10,7 +10,7 @@ aside {
   height: 100%;
   color: white; }
   aside .bus-schedule {
-    margin-top: 20px; }
+    margin-top: 50px; }
     aside .bus-schedule .row {
       position: relative;
       border-bottom: 1px solid #444;
@@ -19,26 +19,31 @@ aside {
       aside .bus-schedule .row:first-child {
         border-top: 1px solid #444; }
     aside .bus-schedule .route {
-      margin-left: 15px;
+      font-weight: bold;
       float: left;
-      font-size: 55px; }
+      font-size: 55px;
+      width: 100px;
+      text-align: center; }
     aside .bus-schedule .description {
-      font-size: 12px;
+      font-size: 11px;
       text-transform: capitalize;
       width: 70px;
       position: absolute;
       left: 50%;
-      margin-left: -25px; }
+      top: 15px;
+      margin-left: -15px; }
     aside .bus-schedule .time {
-      width: 60px;
+      width: 70px;
       text-align: center;
       font-size: 40px;
-      float: right; }
+      float: right;
+      font-weight: bold; }
       aside .bus-schedule .time.positive {
         color: green; }
       aside .bus-schedule .time.negative {
         color: red; }
       aside .bus-schedule .time .delta {
+        font-weight: normal;
         font-size: 20px; }
 
 main {
@@ -57,25 +62,37 @@ main {
     vertical-align: middle; }
 
 flip-clock #clock {
+  margin-left: -10px;
+  margin-right: -10px;
   margin-top: 10px;
   text-align: center; }
   flip-clock #clock * {
-    font-size: 55px; }
+    font-size: 85px;
+    transform: scale(1, 1.3); }
   flip-clock #clock > span {
+    box-shadow: none;
     margin-right: 0px;
-    padding: 5px 5px; }
+    padding: 4px 4px; }
+    flip-clock #clock > span:after {
+      background-color: transparent; }
   flip-clock #clock > b {
     margin-right: 0px;
     color: #777; }
 
 flip-clock::shadow #clock {
+  margin-left: -10px;
+  margin-right: -10px;
   margin-top: 10px;
   text-align: center; }
   flip-clock::shadow #clock * {
-    font-size: 55px; }
+    font-size: 85px;
+    transform: scale(1, 1.3); }
   flip-clock::shadow #clock > span {
+    box-shadow: none;
     margin-right: 0px;
-    padding: 5px 5px; }
+    padding: 4px 4px; }
+    flip-clock::shadow #clock > span:after {
+      background-color: transparent; }
   flip-clock::shadow #clock > b {
     margin-right: 0px;
     color: #777; }
