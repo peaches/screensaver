@@ -1,7 +1,10 @@
 var restify = require('restify'),
+    connect = require('connect'),
     bunyan = require('bunyan'),
+    config = require('./config'),
     log = require('./lib/log'),
-    images = require('./lib/images');
+    images = require('./lib/images'),
+    serveStatic = require('serve-static');
 
 var server = restify.createServer({
   name: 'screensaver',
@@ -11,12 +14,14 @@ var server = restify.createServer({
 server.use(restify.queryParser());
 server.use(restify.gzipResponse());
 
-server.listen(process.env.PORT || '1234', function() {
-  log.info('listening on %s', server.url);
-});
+logger.info('image dir is: ', config.imageDir);
+server.get('/images', images.listImages);
 
-server.get('/images/', images.listImages);
-server.get(/.*/, restify.serveStatic({
-  directory: './dist',
-  default: 'index.html'
-}));
+var connectApp = connect()
+    .use('/', serveStatic(__dirname + '/dist'))
+    .use('/images/', serveStatic(config.imageDir))
+    .use("/api", function (req, res) {
+             server.server.emit('request', req, res);
+         });
+ 
+connectApp.listen(process.env.PORT || 1234);

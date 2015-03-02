@@ -5,7 +5,8 @@
   },
   "devDependencies": {
     "bunyan": "*",
-    "globby": "*",
+    "connect": "*",
+    "glob": "*",
     "gulp": "*",
     "gulp-es6-transpiler": "*",
     "gulp-jshint": "*",
@@ -14,7 +15,8 @@
     "gulp-uglify": "*",
     "gulp-rename": "*",
     "gulp-connect": "*",
-    "restify": "*"
+    "restify": "*",
+    "serve-static": "*"
   },
   "engines": {
     "node": ">=0.8.0"
