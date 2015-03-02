@@ -1,6 +1,6 @@
 var restify = require('restify'),
     bunyan = require('bunyan'),
-    log = bunyan.createLogger({name: 'screensaver'}),
+    log = require('./lib/log'),
     images = require('./lib/images');
 
 var server = restify.createServer({

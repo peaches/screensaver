@@ -23,16 +23,18 @@ function getRouteMinutes(route) {
   }
 }
 
-var routeAndArrivalTime = R.map(
-  R.compose(
-    getRouteMinutes,
-    R.pick(['tripHeadsign', 'routeShortName', 'predictedArrivalTime', 'scheduledArrivalTime'])
-  )
+var routeAndArrivalTime = R.compose(
+  R.map(
+    R.compose(
+      getRouteMinutes,
+      R.pick(['tripHeadsign', 'routeShortName', 'predictedArrivalTime', 'scheduledArrivalTime'])
+    )
+  ),
+  R.take(5)
 );
 
 
 window.updateBusSchedule = (data) => {
-  window.console.log(routeAndArrivalTime(data.data.entry.arrivalsAndDepartures));
   var routes = routeAndArrivalTime(data.data.entry.arrivalsAndDepartures),
       generateRow, generateDelta, deltaClass, html;
 
