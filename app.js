@@ -14,14 +14,14 @@ var server = restify.createServer({
 server.use(restify.queryParser());
 server.use(restify.gzipResponse());
 
-logger.info('image dir is: ', config.imageDir);
+log.info('image dir is: ', config.imageDir);
 server.get('/images', images.listImages);
 
 var connectApp = connect()
-    .use('/', serveStatic(__dirname + '/dist'))
-    .use('/images/', serveStatic(config.imageDir))
-    .use("/api", function (req, res) {
-             server.server.emit('request', req, res);
-         });
- 
+  .use('/', serveStatic(__dirname + '/dist'))
+  .use('/images/', serveStatic(config.imageDir))
+  .use("/api", function (req, res) {
+    server.server.emit('request', req, res);
+  });
+
 connectApp.listen(process.env.PORT || 1234);

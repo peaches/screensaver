@@ -50,7 +50,7 @@ window.updateBusSchedule = (data) => {
     }
 
     return '';
-  }
+  };
 
   generateDelta = function(delta) {
     if (!delta || delta === 0) {
@@ -76,15 +76,9 @@ window.updateBusSchedule = (data) => {
     `;
   };
 
-  html = R.join('\n')(R.map(generateRow, routes))
-  window.console.log('html is', html);
+  html = R.join('\n')(R.map(generateRow, routes));
   $('.bus-schedule').html(html);
 };
-
-$(() => {
-  //$('main img').attr('src', 'https://lh3.googleusercontent.com/-7L5ck8evgcE/VOwlB0ebIVI/AAAAAAAAAoc/vsfPo4X5Bek/s1600/DSC_0115.JPG');
-  $('main img').attr('src', 'https://lh3.googleusercontent.com/-FjRXfJ5yWGk/VOwlBgvw50I/AAAAAAAAAoc/S15mCt7EQUs/s1600/faces.jpg');
-});
 
 var refreshBusSchedule = () => {
   var url = 'http://api.pugetsound.onebusaway.org/api/where/arrivals-and-departures-for-stop/1_35741.json?key=v1_C5%2Baiesgg8DxpmG1yS2F%2Fpj2zHk%3Dc3BoZW5yeUBnbWFpbC5jb20%3D=';
@@ -94,7 +88,7 @@ var refreshBusSchedule = () => {
     dataType: 'jsonp',
     jsonpCallback: 'updateBusSchedule'
   });
-}
+};
 
-refreshBusSchedule()
-//setInterval(refreshBusSchedule, 60000);
+refreshBusSchedule();
+setInterval(refreshBusSchedule, 60000);

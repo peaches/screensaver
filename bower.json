@@ -4,6 +4,7 @@
   "dependencies": {
     "flip-clock": "*",
     "jquery": "*",
+    "lodash": "*",
     "moment": "*",
     "ramda": "*"
   }
