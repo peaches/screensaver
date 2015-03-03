@@ -19,14 +19,14 @@ gulp.task('connect', function() {
 
 // Lint Task
 gulp.task('lint', function() {
-  return gulp.src('scripts/*.js')
+  return gulp.src('web/scripts/*.js')
     .pipe(jshint())
     .pipe(jshint.reporter('default'));
 });
 
 // Compile Our Sass
 gulp.task('sass', function() {
-  return gulp.src('scss/*.scss')
+  return gulp.src('web/scss/*.scss')
     .pipe(sass())
     .pipe(concat('style.css'))
     .pipe(gulp.dest('dist'));
@@ -34,7 +34,7 @@ gulp.task('sass', function() {
 
 // Concatenate & Minify JS
 gulp.task('scripts', function() {
-  return gulp.src('scripts/*.js')
+  return gulp.src('web/scripts/*.js')
     .pipe(es6transpiler())
     .pipe(concat('all.js'))
     .pipe(gulp.dest('dist'))
@@ -44,15 +44,15 @@ gulp.task('scripts', function() {
 });
 
 gulp.task('html', function() {
-  return gulp.src('index.html')
+  return gulp.src('web/index.html')
     .pipe(gulp.dest('dist'));
 });
 
 // Watch Files For Changes
 gulp.task('watch', function() {
-  gulp.watch('scripts/*.js', ['lint', 'scripts']);
-  gulp.watch('index.html', ['html']);
-  gulp.watch('scss/*.scss', ['sass']);
+  gulp.watch('web/scripts/*.js', ['lint', 'scripts']);
+  gulp.watch('web/index.html', ['html']);
+  gulp.watch('web/scss/*.scss', ['sass']);
 });
 
 // Default Task

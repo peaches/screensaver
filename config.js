@@ -1,5 +1,5 @@
 // supports both relative (to app's root) and absolute paths
-var IMAGE_DIR = 'dist/images';
+var IMAGE_DIR = '/media/screensaver';
 
 
 var path = require('path');
