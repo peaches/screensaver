@@ -8,8 +8,8 @@ body, html {
 }
 
 aside {
+  float: left;
   background-color: #232323;
-  position: absolute;
   width: $side-bar-size;
   height: 100%;
   color: white;
@@ -72,19 +72,32 @@ aside {
 main {
   height: 100%;
   background-color: #000;
-  padding-left: $side-bar-size;
   text-align: center;
+  position: relative;
 
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  overflow:hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
 
   img {
     flex-shrink: 0;
     max-height: 100%;
     max-width: 100%;
     vertical-align: middle;
+  }
+
+  .glympse-container {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    left: 0;
+    top: 0;
+
+    iframe {
+      width: 100%;
+      height: 100%;
+    }
   }
 }
 

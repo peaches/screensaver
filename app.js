@@ -1,10 +1,14 @@
-var restify = require('restify'),
+var http = require('http'),
+    restify = require('restify'),
     connect = require('connect'),
     bunyan = require('bunyan'),
     config = require('./config'),
     log = require('./lib/log'),
     images = require('./lib/images'),
-    serveStatic = require('serve-static');
+    serveStatic = require('serve-static'),
+    port = process.env.PORT || 1234,
+    websocket = require('./lib/websocket'),
+    imap = require('./lib/imap');
 
 var server = restify.createServer({
   name: 'screensaver',
@@ -20,8 +24,12 @@ server.get('/images', images.listImages);
 var connectApp = connect()
   .use('/', serveStatic(__dirname + '/dist'))
   .use('/images/', serveStatic(config.imageDir))
-  .use("/api", function (req, res) {
+  .use('/api', function (req, res) {
     server.server.emit('request', req, res);
   });
 
-connectApp.listen(process.env.PORT || 1234);
+var httpServer = http.createServer(connectApp);
+websocket.get(httpServer);
+httpServer.listen(port);
+
+imap.connect();
