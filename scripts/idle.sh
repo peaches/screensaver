@@ -7,7 +7,6 @@ timeout=5*60  # 5 minutes
 while [ true ]; do
   time=$(xprintidle)
   let time/=1000
-  echo $time
   if (($time > $timeout)); then
     if [ $is_idle == 0 ]; then
       wmctrl -R $screensaver_name

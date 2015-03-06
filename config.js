@@ -11,8 +11,6 @@ let _ = require('lodash'),
 let json = util.decrypt(configBlob),
     config = JSON.parse(json);
 
-console.log(config);
-
 module.exports = _.assign({}, config, {
   root: __dirname,
   imageDir: path.resolve(__dirname, config.imageDir)
