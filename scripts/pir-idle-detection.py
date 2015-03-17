@@ -5,8 +5,8 @@ import RPi.GPIO as io
 
 DIR = os.path.dirname(os.path.realpath(__file__))
 PIR = 24
-SCREEN_TIMEOUT = 20    #30 minutes
-IDLE_TIMEOUT = 10
+SCREEN_TIMEOUT = 60 * 30    #30 minutes
+IDLE_TIMEOUT = 60 * 5
 SCREENSAVER_NAME = 'rpi-screensaver'
 
 io.setmode(io.BCM)
