@@ -22,7 +22,16 @@ def screen_is_off():
     return '0x120002' in screen_status
 
 def idle_time():
-    return int(subprocess.check_output(['xprintidle'])) / 1000
+    time
+    while True:
+      try:
+        ms = subprocess.check_output(['xprintidle'])
+        break
+      except subprocess.CalledProcessError:
+        print 'Subprocess Error, ignoring'
+        time.sleep(0.1)
+
+    return int(ms) / 1000
  
 while True:
     if idle_time() > IDLE_TIMEOUT:
@@ -58,5 +67,8 @@ while True:
     if is_idle and (time.time() - last_activity) > SCREEN_TIMEOUT:
         if not screen_is_off():
             subprocess.call([os.path.join(DIR, 'screen.sh'), 'off'])
+
+            # Sleep for at least 10 seconds before checking status again
+            time.sleep(10)
 
     time.sleep(0.5)
